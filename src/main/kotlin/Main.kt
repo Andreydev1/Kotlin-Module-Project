@@ -1,5 +1,15 @@
 fun main() {
-    // ваш код начнется здесь
-    // вы не должны ограничиваться только классом Main и можете создавать свои классы по необходимости
-    println("Привет")
+    val archives: MutableList<Archive> = mutableListOf()
+    var screenManager: ScreenManager = ScreenManager()
+    val screen: Screen = MainScreen("Список Архивов", archives, screenManager)
+
+
+
+    screenManager.openScreen(screen)
+    while (true) {
+        val input = readLine()
+        if (!input.isNullOrEmpty()) {
+            screenManager.currentScreen?.execute(input)
+        }
+    }
 }
